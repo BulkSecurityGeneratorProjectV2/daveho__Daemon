@@ -32,6 +32,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -153,7 +154,7 @@ public class JarRewriter {
 			ZipFile jarfile = new ZipFile(jarFileName);
 			ZipOutputStream newJarfileData = null;
 			try {
-				tempFile = File.createTempFile("ccRewriteJar", ".jar");
+				tempFile = Files.createTempFile("ccRewriteJar", ".jar").toFile();
 				tempFile.deleteOnExit();
 				OutputStream tempOutputStream = new BufferedOutputStream(new FileOutputStream(tempFile));
 				newJarfileData = new ZipOutputStream(tempOutputStream);

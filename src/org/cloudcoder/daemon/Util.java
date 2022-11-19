@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -585,7 +586,7 @@ public class Util {
 			
 			try {
 				// Create a temp file that is marked for deletion when the program exits.
-				File f = File.createTempFile("cctemp", null, tempDir);
+				File f = Files.createTempFile(tempDir.toPath(), "cctemp", null).toFile();
 				f.deleteOnExit();
 				
 				// Copy data from the resource into the temp file.

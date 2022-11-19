@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -240,7 +241,7 @@ public class Upgrade {
 		// and configure the Jar rewriter to use them
 		List<File> tmpConfigFileList = new ArrayList<File>();
 		for (String configFile : configFileList) {
-			File tmp = File.createTempFile("dvup", ".tmp");
+			File tmp = Files.createTempFile("dvup", ".tmp").toFile();
 			tmp.deleteOnExit();
 			tmpConfigFileList.add(tmp);
 			//System.out.println(configFile + " ==> " + tmp.getAbsolutePath());
